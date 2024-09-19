@@ -8,6 +8,7 @@ void startEchoServer()
     int index;
     struct sockaddr_in address;
     char buffer[BUFFER_SIZE];
+    socklen_t addrlen;
 
 
     // Initialize all client_socket[] to 0
