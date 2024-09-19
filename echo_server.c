@@ -130,7 +130,7 @@ void startEchoServer()
                            inet_ntoa( address.sin_addr ), ntohs( address.sin_port ) );
 
                     close( sd );
-                    client_socket[i] = 0;
+                    client_socket[index] = 0;
                 }
                 else
                 {
