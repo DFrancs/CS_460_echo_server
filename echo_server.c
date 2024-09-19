@@ -5,10 +5,11 @@ void startEchoServer()
     int server_socket, new_socket, client_socket[MAX_CLIENTS], max_clients = MAX_CLIENTS;
     int max_sd, sd, activity, valread;
     int opt = 1;
+    int index;
     struct sockaddr_in address;
     char buffer[BUFFER_SIZE];
 
-    int index;
+
     // Initialize all client_socket[] to 0
     for (index = 0; index < max_clients; index++)
     {
@@ -63,7 +64,6 @@ void startEchoServer()
         FD_SET(server_socket, &readfds);
         max_sd = server_socket;
 
-        int index;
         // Add child sockets to the set
         for (index = 0; index < max_clients; index++)
         {
@@ -96,7 +96,6 @@ void startEchoServer()
             printf("New connection, socket fd is %d, ip is : %s, port : %d\n",
                    new_socket, inet_ntoa(address.sin_addr), ntohs(address.sin_port));
 
-            int index;
             // Add new socket to array of sockets
             for (index = 0; index < max_clients; index++)
             {
@@ -109,7 +108,7 @@ void startEchoServer()
             }
         }
 
-        int index;
+
         // Handle input/output from clients
         for (index = 0; index < max_clients; index++)
         {
