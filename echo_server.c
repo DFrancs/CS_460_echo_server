@@ -19,7 +19,7 @@ void startEchoServer()
     // Initialize all client_socket[] to 0
     for ( index = 0; index < max_clients; index++ )
     {
-        client_socket[i] = 0;
+        client_socket[index] = 0;
     }
 
     // Create the server socket
@@ -72,7 +72,7 @@ void startEchoServer()
         // Add child sockets to the set
         for ( index = 0; index < max_clients; index++ )
         {
-            sd = client_socket[i];
+            sd = client_socket[index];
 
             // Add valid socket descriptors to the set
             if ( sd > 0 ) FD_SET( sd, &readfds );
@@ -105,10 +105,10 @@ void startEchoServer()
             // Add new socket to array of sockets
             for ( index = 0; index < max_clients; index++ )
             {
-                if ( client_socket[i] == 0 )
+                if ( client_socket[index] == 0 )
                 {
-                    client_socket[i] = new_socket;
-                    printf( "Adding to list of sockets as %d\n", i );
+                    client_socket[index] = new_socket;
+                    printf( "Adding to list of sockets as %d\n", index );
                     break;
                 }
             }
@@ -117,7 +117,7 @@ void startEchoServer()
         // Handle input/output from clients
         for ( index = 0; index < max_clients; index++ )
         {
-            sd = client_socket[i];
+            sd = client_socket[index];
 
             if ( FD_ISSET( sd, &readfds ) )
             {
