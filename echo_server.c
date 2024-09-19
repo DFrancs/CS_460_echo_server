@@ -30,7 +30,8 @@ void startEchoServer()
     }
 
     // Set socket options to allow multiple connections
-    if ( setsockopt( server_socket, SOL_SOCKET, SO_REUSEADDR, ( char * )&opt, sizeof( opt ) ) < 0 ) // Error occurs if function returns < 0
+    if ( setsockopt( server_socket, SOL_SOCKET, SO_REUSEADDR,
+            ( char * )&opt, sizeof( opt ) ) < 0 ) // Error occurs if function returns < 0
     {
         perror( "Setsockopt failed" );
         close( server_socket );
@@ -43,7 +44,8 @@ void startEchoServer()
     address.sin_port = htons( PORT );
 
     // Bind the socket to the specified port
-    if ( bind( server_socket, ( struct sockaddr * )&address, sizeof( address ) ) < 0 ) // Error occurs if function returns < 0
+    if ( bind( server_socket, ( struct sockaddr * )&address,
+            sizeof( address ) ) < 0 ) // Error occurs if function returns < 0
     {
         perror( "Bind failed" );
         close( server_socket );
