@@ -136,3 +136,9 @@ void startEchoServer()
         }
     }
 }
+
+int main()
+{
+    startEchoServer();
+    return 0;
+}
